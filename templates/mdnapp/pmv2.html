@@ -1,0 +1,73 @@
+<html>
+   <head>
+      <style type="text/css">
+         #leftZone{float:left;}
+         #rightZone{float:left;}
+         #box1, #box2, #box3, #box4, #box5 {
+            padding:10px;margin:10px;-moz-user-select:none; background-color: yellow; width:400px; height:50px;
+         }
+         #pm1, #pm2, #pm3, #pm4, #pm5 {
+           padding:20px; font-size: 25px;
+         }
+
+
+      </style>
+      <script type="text/javascript">
+         function dragStart(ev,pm) {
+            ev.dataTransfer.effectAllowed='move';
+            ev.dataTransfer.setData(pm, ev.target.getAttribute('id'));
+            ev.dataTransfer.setDragImage(ev.target,0,0);
+            return true;
+         }
+
+         function dragEnter(ev) {
+            event.preventDefault();
+            return true;
+         }
+         function dragOver(ev) {
+            return false;
+         }
+         function dragDrop(ev,pm) {
+            var src = ev.dataTransfer.getData(pm);
+            ev.target.appendChild(document.getElementById(src));
+            ev.stopPropagation();
+            return false;
+         }
+
+      </script>
+   </head>
+   <body>
+      <center>
+         <h2>4.1 Develope Project Charter</h2>
+         <div id="leftZone">
+             <div id="pm1" draggable="true" ondragstart="return dragStart(event,'pm1')">
+              PM1 is coming
+             </div>
+             <div id="pm2" draggable="true" ondragstart="return dragStart(event,'pm2')">
+              PM2 is coming
+             </div>
+             <div id="pm3" draggable="true" ondragstart="return dragStart(event,'pm3')">
+              PM3 is coming
+             </div>
+             <div id="pm4" draggable="true" ondragstart="return dragStart(event,'pm4')">
+              PM4 is coming
+             </div>
+             <div id="pm5" draggable="true" ondragstart="return dragStart(event,'pm5')">
+              PM5 is coming
+             </div>
+         </div>
+         <div id="rightZone">
+             <div id="box1" ondragenter="return dragEnter(event)" ondrop="return dragDrop(event,'pm1')"
+    		    ondragover="return dragOver(event)">1</div>
+             <div id="box2" ondragenter="return dragEnter(event)" ondrop="return dragDrop(event,'pm2')"
+    		    ondragover="return dragOver(event)">2</div>
+             <div id="box3" ondragenter="return dragEnter(event)" ondrop="return dragDrop(event,'pm3')"
+    		    ondragover="return dragOver(event)">3</div>
+    		  <div id="box4" ondragenter="return dragEnter(event)" ondrop="return dragDrop(event,'pm4')"
+    		    ondragover="return dragOver(event)">4</div>
+             <div id="box5" ondragenter="return dragEnter(event)" ondrop="return dragDrop(event,'pm5')"
+    		    ondragover="return dragOver(event)">5</div>
+		 </div>
+      </center>
+   </body>
+</html>

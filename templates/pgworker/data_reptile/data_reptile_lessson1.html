@@ -1,0 +1,34 @@
+
+{% extends "pgworker/data_reptile_base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-5">
+		<h2>Lesson1-網路爬蟲簡介</h2>
+		<p class="lead" style="font-size:25px;">
+		                一般使用者是以瀏覽器依據網址(url)向某一網站伺服器送出請求(request)，
+		                如果對方伺服器同意你的請求，就會做出回應(response)，
+		                將網頁的原始碼回傳給你的瀏覽器，瀏覽器再將原始碼轉換成圖文並茂的頁面。
+
+	    </p>
+    </div>
+    <div class="col-sm-7">
+		<img src='{% static "/images/data_reptile_lessson1_01.png" %}' class="rounded" alt="Cinque Terre" width="304" height="236">
+    </div>
+  </div>
+    <div class="row">
+
+    <div class="col-sm-5">
+		<p class="lead" style="font-size:25px;">
+		                而網路爬蟲即是以程式碼偽裝成一般的使用者，向對方伺服器送出請求，
+		                取得回應（原始碼）。再從原始碼中抽取出需要的資訊。
+	    </p>
+    </div>
+     <div class="col-sm-7">
+		<img src='{% static "/images/data_reptile_lessson1_02.png" %}' class="rounded" alt="Cinque Terre" width="304" height="236">
+    </div>
+  </div>
+</div>
+{% endblock %}

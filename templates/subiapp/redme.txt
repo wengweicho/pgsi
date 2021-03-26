@@ -1,0 +1,9 @@
+1. subiapp: subi statnds for subinstitution
+2. The main stratage of developing program-teaching institution is build the
+   first five classes by my self
+3. The first demoable website should be settled by 4/30
+4. the target students are 國一升國二學生,五月一日開始招生
+5. one class per week, two hours per class.
+6. 辦學理念(尚未處理): use drag&drop to show the reason of why 國一升國二 is the best time for learnning program
+   秀朗分校招生動態(尚未處理)
+   潛力分校(進行中)

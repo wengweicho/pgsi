@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid" align="center">
+  {% for unit in boardunits %}
+        <div class="col-12 col-md-6" >
+	     <table border="0"  cellpadding="2" cellspacing="2">
+	        <tr align="center" style="color:lightblue">
+			    <td>
+			        <i class="fas fa-portrait" ></i>{{unit.bname}}
+					<i class="fas fa-calendar-alt" ></i>{{unit.btime}}
+				</td>
+			</tr>
+			<tr align="center"   style="color:green"   ><td><strong>標題：{{unit.bsubject}}</strong></td></tr>
+			<tr align="center" style="color:green"><td>{{unit.bcontent|linebreaks}}</td></tr>
+		{% if unit.bresponse != "" %}
+		    <tr align="center"   style="color:pink"   ><td><strong>版主回應</strong>：{{unit.bresponse}}</td></tr>
+		{% endif %}
+		 </table>
+		 </div>
+  {% empty %}
+	<tr>
+		  <div class="messageDiv"><img src="{% static "images/boardapp/exclamation.png" %}" width="16" height="16" align="absmiddle"> 目前沒有新的資料，歡迎您留言。 </div>
+	</tr>
+  {% endfor %}
+
+	  <div class="pagebutton" align="center">
+	      <br><br>
+		  {% if currentpage > 1 %}
+			   <a href="/boardapp/index/prev/" title="上一頁">
+			  <i class="fas fa-arrow-alt-circle-left" style="font-size:32px;color:red"></i></a>
+		  {% endif %}
+		  <a href="/boardapp/post/" title="我要留言">
+			  <i class="fas fa-edit" style="font-size:42px;color:green"></i></a>
+		  <a href="/boardapp/login/" title="版主管理">
+			  <i class="fas fa-user-tie" style="font-size:42px;color:green"></i></a>
+		  {% if currentpage < totpage %}
+			  <a href="/boardapp/index/next/" title="下一頁">
+			  <i class="fas fa-arrow-alt-circle-right" style="font-size:32px;color:red"></i></a>
+		  {% endif %}
+	  </div>
+
+</div>
+{% endblock %}

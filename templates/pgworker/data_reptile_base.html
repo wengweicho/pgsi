@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+   <title>程工學院</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+			<a class="navbar-brand" href="/index/">信念_網站首頁</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/data_reptile/">網路爬蟲首頁 <span class="sr-only">(current)</span></a>
+      </li>
+	 <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        網路爬蟲教材1
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/data_reptile_lessson1/">Lesson1-網路爬蟲簡介</a>
+        <a class="dropdown-item" href="/data_reptile_lessson2/">Lesson2-beautifulsoup簡介</a>
+        <a class="dropdown-item" href="/data_reptile_lessson3/">Lesson3-beautifulsoup實例說明</a>
+        <a class="dropdown-item" href="/data_reptile_lessson4/">Lesson4-</a>
+        <a class="dropdown-item" href="/data_reptile_lessson5/">Lesson5-</a>
+        <a class="dropdown-item" href="/data_reptile_lessson6/">Lesson6-</a>
+      </div>
+    </li>
+	<li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        網路反爬蟲教材1
+      </a>
+      <div class="dropdown-menu">
+         <a class="dropdown-item" href="/python_anywhere/">Lesson1-</a>
+        <a class="dropdown-item" href="/git_hub/">Lesson2-</a>
+        <a class="dropdown-item" href="/django_fw/">Lesson3-</a>
+        <a class="dropdown-item" href="/bootstrap_fw/">Lesson4-</a>
+        <a class="dropdown-item" href="/data_view/">Lesson5-</a>
+        <a class="dropdown-item" href="/data_reptile/">Lesson6-</a>
+
+      </div>
+    </li>
+
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline mt-2 mt-md-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+{%block content%}{%endblock%}
+</body>
+</html>

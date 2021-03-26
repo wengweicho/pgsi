@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class='container'>
+    <nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">永和分校</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">中和分校</button>
+    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">板橋分校</button>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                上課時間: 每周六早上 9:00~11:00<br>
+                上課地點: 待定<br>
+                學費: 每個月 1500(不含教材)<br>
+                招生對象: 國一,二生<br>
+                開課日:2021/09/04<br></div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+               上課時間: 每周日早上 9:00~11:00<br>
+                上課地點: 待定<br>
+                學費: 每個月 1500(不含教材)<br>
+                招生對象: 國一,二生<br>
+                開課日:2021/09/05<br></div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                上課時間: 每周日下午02:00~04:00<br>
+                上課地點: 待定<br>
+                學費: 每個月 1500(不含教材)<br>
+                招生對象: 國一,二生<br>
+                開課日:2021/09/05<br></div>
+ </div>
+{% endblock %}

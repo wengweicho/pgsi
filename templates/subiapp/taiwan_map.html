@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+ <div class='container'>
+     <p1><font color="red">抱歉,只有雙北有建置資料</font></p1>
+     <div class="row">
+      <div  class="col-sm-5" style="height:600px;" align="left" id="left"></div>
+      <div  class="col-sm-7" style="height:600px;" align="left" id="right">
+             <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">區名</th>
+                  <th scope="col">名稱</th>
+                  <th scope="col">電話</th>
+                  <th scope="col">地址</th>
+                  <th scope="col"></th>
+                </tr>
+                </tr>
+              </thead>
+              <tbody>
+                {% for subiinfo in subiinfos %}
+                <tr>
+                  <td>{{subiinfo.district | slice:':2'}}</td>
+                  <td>{{subiinfo.name}}</td>
+                  <td>{{subiinfo.tel | cut:'-'}}</td>
+                  <td>{{subiinfo.addr}}</td>
+                  <td>
+
+                      <a href="/subiapp/modify_onerecord/{{subiinfo.name}}/" title="修改">
+                        <span style="color: green;"><i class="far fa-edit fa-lg"></i></span>
+                      </a>
+                      <a href="/subiapp/delete_onerecord/{{subiinfo.name}}/" title="刪除">
+                        <span style="color: Tomato;"><i class="far fa-trash-alt fa-lg"></i></span>
+                      </a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+      </div>
+     </div>
+ </div>
+    <script>
+//台北_里.json來源  https://data.taipei/#/dataset/detail?id=6b17b31d-4e16-495e-95b1-9fd1f47c80d8 plus mapshaper
+//	center: [120.5, 23.55]  	center: [x, y], x + left y+ down
+		var source_json = '{% static source %}'
+		$.get(source_json, function (from_json) {
+				echarts.registerMap('target_map', from_json); // 注册地图
+				var mapChart = echarts.init(document.getElementById('left'));
+					var option = {
+
+							series: [{
+										type: 'map',
+										label: {
+											show: {{show}},
+											fontSize:10
+										},
+										zoom: 1.25,
+										center: [120.5, 23.75],
+										map: 'target_map'
+
+							}]
+					}
+
+
+				mapChart.setOption(option);
+			    mapChart.on('click', function (params) {window.location.replace('/subiapp/taiwan_map/'+params.name+'/');});
+				// legend toggling triggers legendselectchanged event only
+
+		});
+</script>
+{% endblock %}

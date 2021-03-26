@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <div class="container" >
+   <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">縣市名稱</th>
+      <th scope="col">行政區名</th>
+      <th scope="col">分校名稱</th>
+      <th scope="col">分校電話</th>
+      <th scope="col">分校地址</th>
+      <th scope="col">主任名字</th>
+      <th scope="col">主任手機</th>
+      <th scope="col">拜訪次數</th>
+      <th scope="col">拜訪日期</th>
+    </tr>
+    </tr>
+  </thead>
+  <tbody>
+    {% for subiinfo in subiinfos %}
+    <tr>
+      <td>{{subiinfo.city}}</td>
+      <td>{{subiinfo.district}}</td>
+      <td>{{subiinfo.name}}</td>
+      <td>{{subiinfo.tel}}</td>
+      <td>{{subiinfo.addr}}</td>
+      <td>{{subiinfo.owner}}</td>
+      <td>{{subiinfo.cel}}</td>
+      <td>{{subiinfo.visit_times}}</td>
+      <td>{{subiinfo.visit_lastdate}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+  </div>
+
+{% endblock %}

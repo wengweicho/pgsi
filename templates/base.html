@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh_tw">
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src='{% static "js/popper.js" %}'></script>
+    <script src='{% static "js/jquery.js" %}'></script>
+    <script src='{% static "js/echarts.js" %}'></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <style>
+       .allDiv{
+    	border: 1px outset green;
+    	background-color: lightblue;
+    	float: center;
+    	height: 600px;
+    	width: 100%;
+    	margin-right: 0%;
+    	margin-left: 0%;
+    	text-align: center;}
+    	 #leftZone{float:left;}
+         #rightZone{float:left;}
+          #box1, #box2, #box3, #box4, #box5 {
+            padding:10px;margin:10px;-moz-user-select:none; background-color: yellow; width:400px; height:50px;
+         }
+         #pm3, #pm4, #pm5 {
+           padding:20px; font-size: 25px; background-color: blue;
+         }
+
+    </style>
+
+	<title>程工學苑</title>
+
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <a class="navbar-brand" href="/index/">程工學苑</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            關於我們
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/subiapp/trust/">辦學理念</a>
+            <a class="dropdown-item" href="/subiapp/admissions">分校招生動態</a>
+            <a class="dropdown-item" href="/subiapp/taiwan_map/新北市">潛力分校</a>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            購物車
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <a class="dropdown-item" href="/cartapp/index">購物車首頁</a>
+           <a class="dropdown-item" href="/cartapp/cart/">檢視購物車</a>
+           <a class="dropdown-item" href="/cartapp/cartordercheck/">查詢訂單</a>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            專案管理
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/mdnapp/pmv1">PMV1</a>
+            <a class="dropdown-item" href="/mdnapp/pmv2">PMV2</a>
+            <a class="dropdown-item" href="/mdnapp/pmv3">PMV3</a>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            文件實作3.1.6
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/ch3app/file_uploads_p210/">上傳檔案P210</a>
+            <a class="dropdown-item" href="/amc_index/">小學畢業後的生涯規劃</a>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            留言板
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/boardapp/">Python留言板</a>
+            <a class="dropdown-item" href="/view_board/">資料視覺化留言板</a>
+            <a class="dropdown-item" href="/reptile_board/">網路爬蟲留言板</a>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            知識庫
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="https://developer.mozilla.org/zh-TW/docs/Web/JavaScript">JavaScript</a>
+            <a class="dropdown-item" href="/python_anywhere/">雲端PythonAnywhere</a>
+            <a class="dropdown-item" href="/git_hub/">雲端GitHub</a>
+            <a class="dropdown-item" href="/django_fw/">後端框架Django</a>
+            <a class="dropdown-item" href="/bootstrap_fw/">響應式網站BootStrap</a>
+            <a class="dropdown-item" href="/data_view/">資料視覺化echart</a>
+            <a class="dropdown-item" href="/data_reptile/">網路爬蟲</a>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            專案討論
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="http://kmtiger.pythonanywhere.com/">小瓢蟲氣泡飲</a>
+            <a class="dropdown-item" href="/amc_index/">小學畢業後的生涯規劃</a>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            留相板
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <a class="dropdown-item" href="/albumapp/">相簿首頁</a>
+           <a class="dropdown-item" href="/albumapp/login/">相簿管理</a>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " aria-current="page" href="/upload_files/">上傳檔案</a>
+        </li>
+
+      </ul>
+    </div>
+</nav>
+{%block content%}{%endblock%}
+</body>
+</html>
+
+

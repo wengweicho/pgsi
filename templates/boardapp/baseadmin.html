@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+   <title>程工學苑</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+			<a class="navbar-brand" href="/index/">信念_網站首頁</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+	 <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        留言板
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/python_board/">Python留言板</a>
+        <a class="dropdown-item" href="/view_board/">資料視覺化留言板</a>
+        <a class="dropdown-item" href="/reptile_board/">網路爬蟲留言板</a>
+      </div>
+    </li>
+	 <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        知識庫
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/python_anywhere/">雲端PythonAnywhere</a>
+        <a class="dropdown-item" href="/git_hub/">雲端GitHub</a>
+        <a class="dropdown-item" href="/django_fw/">後端框架Django</a>
+        <a class="dropdown-item" href="/bootstrap_fw/">響應式網站BootStrap</a>
+        <a class="dropdown-item" href="/data_view/">資料視覺化echart</a>
+        <a class="dropdown-item" href="/data_reptile/">網路爬蟲</a>
+      </div>
+    </li>
+	<li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        專案討論
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="http://kmtiger.pythonanywhere.com/">小瓢蟲氣泡飲</a>
+        <a class="dropdown-item" href="/amc_index/">小學畢業後的生涯規劃</a>
+
+      </div>
+    </li>
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+       留相板
+      </a>
+      <div class="dropdown-menu">
+           <a class="dropdown-item" href="/albumapp/">留相板</a>
+        <a class="dropdown-item" href="/upload_files/">上傳檔案</a>
+
+
+      </div>
+    </li>
+    </ul>
+    <form class="form-inline mt-2 mt-md-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+<div class="container-fluid">
+    <div style="text-align:center">
+	        <img class="img-fluid" src="{% static "images/boardapp/board_main.png" %}">
+	</div>
+	  <table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+			  <div class="functionDiv">
+				<table width="92%" border="0" align="center" cellpadding="0" cellspacing="0">
+				  <tr>
+					<td align="center">
+						 <img src="{% static "images/door_out.png" %}" width="16" height="16" align="absmiddle" /> <a href="/boardapp/logout/">登出管理</a></td>
+					</td>
+				  </tr>
+				</table>
+			  </div>
+	  </table>
+   {% block content %}{% endblock %}
+</div>
+</body>
+</html>

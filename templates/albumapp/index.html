@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% load extras %}
+
+{% block content %}
+<div class="container-sm">
+	<table class="table">
+    <div class="subjectDiv"> 網路相簿總覽 </div>
+    <div class="actionDiv">相簿總數：{{totalalbum}} </div>
+    <div class="normalDiv"></div>
+    {% for album in albums %}
+
+          {% if lengths|extras:forloop.counter0 == 0 %}
+            <img src="{% static "images/albumapp/nopic.png" %}" alt="暫無圖片" class="img-thumbnail" />
+          {% else %}
+            <a href="/albumapp/albumshow/{{album.id}}/">
+            <img src="/albumapp/media/{{photos|extras:forloop.counter0}}" class="img-thumbnail" /></a>
+          {% endif %}
+
+
+          {% if lengths|extras:forloop.counter0 == 0 %}
+            {{album.atitle}}<br />
+          {% else %}
+            <a href="/albumapp/albumshow/{{album.id}}/">{{album.atitle}}</a><br />
+          {% endif %}
+          <span class="smalltext">共 {{lengths|extras:forloop.counter0}} 張</span><br>
+          <br>
+
+
+    {% endfor %}
+    <tr>
+		<td align="center" background="{% static "images/albumapp/album_r2_c1.jpg" %}" class="trademark">每張圖片都是時間的累積 最重要的是能幫您有效學習</td>
+	  </tr>
+    </table>
+</div>
+{% endblock %}
+
+<img src="..." class="img-thumbnail" alt="...">

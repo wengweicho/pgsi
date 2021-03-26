@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="container-sm">
+	<table class="table">
+	  <tr>
+	    <td><img src="/static/images/cartapp/{{product.pimages}}"/></td><td>產品介紹:{{product.pdescription|linebreaks}}</td>
+	  </tr>
+	  <tr>
+	    <td colspan="2"><a href="/cartapp/addtocart/add/{{product.id}}/"><i class="fas fa-cart-plus" style="font-size:27px;color:green"></i></a>&nbsp&nbsp產品名:{{product.pname}}&nbsp&nbsp&nbsp&nbsp&nbsp特價:{{product.pprice}}</td>
+	 </tr>
+	</table>
+  </div>
+{% endblock %}

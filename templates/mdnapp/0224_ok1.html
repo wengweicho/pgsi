@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>小朋友上課用</title>
+
+
+
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <label for="customname">請輸入學生姓名:</label>
+      <input id="customname" type="text" placeholder="">
+    </div>
+    <div>
+      <label for="normal">還好</label>    <input id="normal" type="radio" name="degree" value="normal" checked>
+      <label for="positive">很想玩</label><input id="positive" type="radio" name="degree" value="positive">
+      <label for="negative">不想玩</label><input id="negative" type="radio" name="degree" value="negative">
+    </div>
+    <div>
+      <button class="randomize">請先選擇你對遊戲的愛好程度後再按我</button>
+    </div>
+    <!-- Thanks a lot to Willy Aguirre for his help with the code for this assessment -->
+    <p class="story"></p>
+    <script >
+        const customName = document.getElementById('customname');
+        const randomize = document.querySelector('.randomize');
+        const story = document.querySelector('.story');
+        let storyText = ' NAME ,歡迎參加此遊戲,你是 RESULT';
+        randomize.addEventListener('click', result);
+
+function randomValueFromArray(array){
+  const random = Math.floor(Math.random()*array.length);
+  return array[random];
+}
+
+function getRandomResult(max) {
+    let randomValue = Math.floor(Math.random() * Math.floor(max))+1
+    if(  randomValue == 1){
+        return 'pass and value='+ randomValue ;
+    }
+  return 'fail and value='+ randomValue ;
+}
+
+function result() {
+  let newStory = storyText;
+
+
+  if(customName.value !== '') {
+    const name = customName.value;
+    newStory = newStory.replace('NAME',name);
+  }
+  if(document.getElementById("normal").checked) {
+    const RandomResult =  getRandomResult(6);
+    newStory = newStory.replace('RESULT',RandomResult);
+  }
+  else if(document.getElementById("positive").checked) {
+    const RandomResult =  getRandomResult(3);
+    newStory = newStory.replace('RESULT',RandomResult);
+  }
+  else if(document.getElementById("negative").checked) {
+    const RandomResult =  getRandomResult(12);
+    newStory = newStory.replace('RESULT',RandomResult);
+  }
+
+  story.textContent = newStory;
+  story.style.visibility = 'visible';
+}
+    </script>
+  </body>
+</html>

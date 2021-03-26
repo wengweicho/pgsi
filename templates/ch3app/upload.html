@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+
+        <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|safe }}
+        <button type="submit" class="btn btn-primary">上傳多個檔案</button>
+    </form>
+
+</div>
+{% endblock %}

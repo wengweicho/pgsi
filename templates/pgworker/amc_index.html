@@ -1,0 +1,87 @@
+{% extends "pgworker/amc_base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+		<img src='{% static "/images/trust_index_1.png" %}' class="rounded" alt="Cinque Terre" width="304" height="236">
+    </div>
+	 <div class="col-sm-8">
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">
+    網站目標
+  </button>
+   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">
+    開發日記
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">網站目標</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          透過網站讓小六生了解<br>
+          1. 生涯規劃對個人的重要性<br>
+          2. 快樂程工能夠做那些工作(從人力銀行爬蟲)<br>
+          3. 這些工作的共同面(eChart視覺分析)<br>
+          4. 共同面技能如何從現在開始學習(小六 MTA Javascript)<br>
+          5. 高階技能(自學,升學,資管,資工)<br>
+
+        </div>
+
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+   <!-- The Modal -->
+  <div class="modal fade" id="myModal2">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">開發日記</h4>
+          <button type="button" class="close" data-dismiss="modal">×</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          已完成項目<br>
+          ------------------<br>
+          進行中項目<br>
+          1.先完成快樂工作頁面<br>
+          ------------------<br>
+          待完成項目<br>
+          1.開發日記連到資料庫<br>
+          2.小六到國三的程式課程規劃<br>
+          2.1 原則上教學均以網站設計為主軸(80),認證考試為輔(20)<br>
+          ------------------<br>
+
+        </div>
+
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+    </div>
+
+  </div>
+</div>
+{% endblock %}

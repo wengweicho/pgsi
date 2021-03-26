@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class='container'>
+ <p class="lead">
+     考上好大學是重要的,但是知道您為什麼要考上好大學更重要,現實是,有一半的人,根本考不上好大學<br>
+     考上好大學是重要的,因為他增加您找到好工作的機會,幸運的是,你生長在網路世代,只要你具備程式設計能力,不上大學,也可以找到好工作<br>
+     我們的課程專門給那些認為想念高職電子商務科和大學資管系,將來想從事程式設計相關工作的國中生<br>
+     課程的產出為學生可自已經營的網站,網站的大小依每個學生的努力程度和生意思維不同<br>
+     最差的狀況,是您把不知要做甚麼的時間,來學習做網站和經營生意的基本功(HTML,PYTHON,Related FrameWork),那已經是最真實和最佳的學習歷程<br>
+ </p>
+ <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#opposite_lee_ga_ton">
+  課綱中「資訊科技科」
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="opposite_lee_ga_ton" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">國民中學階段，學生應能以運算思維整合使用資訊科技來解決問題，進行團隊溝通與創作
+        <br>高級中等學校階段學生應更進一步瞭解資訊科學內涵，內化運算思維，從而發展創新思考與團隊合作之能力。</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         近年來資訊科技之發展迅速，資訊科技已與人類生活各方面事事交織習習相關；因此，各先進國家為了提高國家競爭力
+         ，皆已於中小學教育中開設資訊課程，例如美國、英國、德國、荷蘭、日本、澳洲等（國家教育研究院，2013）。而運
+         算思維更列為各國課綱的核心素養；其中，美國電腦科學教師協會 (Computer Science Teacher Association, CSTA)
+         於2016提出之K-12電腦科學課程標準中，將其列為五大核心概念之一；而英國2013年修訂之課綱中，也期望透過資訊教
+         育使學生能夠運用運算思維和創造力來理解和改變世界。而澳洲2014年訂定之數位科技課綱的課程核心，則是運用運算
+         思維與資訊系統來定義、設計、實踐數位解決方案（digital solutions）；紐西蘭2017年發佈之數位科技課綱亦將運
+         算思維列為兩大關鍵能力之一。顯示出科技先進國家都將運算思維的培養、資訊科學與資訊科技的學習納入國民教育之中。
+         <br>  我國課綱中「資訊科技科」亦是以運算思維為主軸，透過資訊科學相關知能的學習，培養邏輯思考、系統化思考等運算思
+         維，並藉由資訊科技之運用與實作，增進運算思維的應用能力、解決問題能力、團隊合作及創新思考能力。綜合各國之資
+         訊科技學習規劃可以看出，在國民小學階段，學生應能運用資訊科技工具處理生活與學習事務，並培養基本運算思維；在
+         國民中學階段，學生應能以運算思維整合使用資訊科技來解決問題，進行團隊溝通與創作；在高級中等學校階段學生應更
+         進一步瞭解資訊科學內涵，內化運算思維，從而發展創新思考與團隊合作之能力。
+         <br>資料來源(https://compthinking.csie.ntnu.edu.tw/index.php/plan-start/)
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+{% endblock %}

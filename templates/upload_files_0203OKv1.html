@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <p1>mysite/static/images/albumapp<br></p1>
+    <p1>mysite/static/css/albumapp<br></p1>
+    <p1>mysite/templates/albumapp<br></p1>
+    <p1>mysite/albumapp<br></p1>
+    <p1>mysite/static/images/boardapp<br></p1>
+    <p1>mysite/static/css/boardapp<br></p1>
+    <p1>mysite/templates/boardapp<br></p1>
+    <p1>mysite/boardapp<br></p1>
+    <p1>mysite/static/images/cartapp<br></p1>
+    <p1>mysite/static/css/cartapp<br></p1>
+    <p1>mysite/templates/cartapp<br></p1>
+    <p1>mysite/cartapp<br></p1>
+
+    <p1><br>path={{path}}<br></p1>
+        <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|safe }}
+        <button type="submit" class="btn btn-primary">上傳多個檔案</button>
+    </form>
+
+</div>
+{% endblock %}

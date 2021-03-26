@@ -1,0 +1,335 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid" style="margin-top:30px">
+  <div class="card">
+  <h4 class="card-header">5.3 DEFINE SCOPE </h4>
+    <h4 id="app_status">正確與否:</h4>
+    <div class="row align-items-center">
+		<div class="col-4">
+		 <div id="input_zone"  style="height: 280px; background-color: #eee;border: #999 1px solid ; "  ondragover="return false"></div>
+		</div>
+		<div class="col-4">
+		 <div id="system_zone" style="height: 280px; background-color: #eee;border: #999 1px solid ; "  ondragover="return false"></div>
+		</div>
+		<div class="col-4">
+		 <div id="output_zone" style="height: 280px; background-color: #eee;border: #999 1px solid ; "  ondragover="return false"></div>
+		</div>
+
+   </div>
+   <div class="row align-items-center" >
+		<div class="col-4" >
+			<div id="object1" value="Project Charter" class="objects" draggable="true" >Project Charter</div>
+		</div>
+		<div class="col-4">
+			<div id="object2" value="Project Management Plan" class="objects" draggable="true">Project Management Plan</div>
+		</div>
+		<div class="col-4">
+			<div id="object3" value="Project Document" class="objects" draggable="true">Project Document</div>
+		</div>
+		<div class="col-4">
+			<div id="object4" value="Enterprise enviromental factors" class="objects" draggable="true">Enterprise enviromental factors</div>
+		</div>
+		<div class="col-4">
+			<div id="object5" value="Organiztional process assets" class="objects" draggable="true">Organiztional process assets</div>
+		</div>
+		<div class="col-4">
+			<div id="object6" value="Expert judgment" class="objects" draggable="true">Expert judgment</div>
+		</div>
+		<div class="col-4">
+			<div id="object7" value="Data analysis" class="objects" draggable="true">Data analysis</div>
+		</div>
+		<div class="col-4">
+			<div id="object8" value="Decision Making" class="objects" draggable="true">Decision Making</div>
+		</div>
+		<div class="col-4">
+			<div id="object9" value="Interpersonal and team skills" class="objects" draggable="true">Interpersonal and team skills</div>
+		</div>
+		<div class="col-4">
+			<div id="object10" value="Product analysis" class="objects" draggable="true">Product analysis</div>
+		</div>
+		<div class="col-4">
+			<div id="object11" value="Project scope statement" class="objects" draggable="true">Project scope statement</div>
+		</div>
+		<div class="col-4">
+			<div id="object12" value="Project documents updates" class="objects" draggable="true">Project documents updates</div>
+		</div>
+	</div>
+ </div>
+</div>
+<script type="text/javascript">
+document.write('<style>.objects {background-color:#FFF3CC;border:#DFBC6A 1px solid;height:40px;margin:10px;padding:5px;font-size:20px;text-align:center;box-shadow: 2px 2px 2px #999;W610826cursor:move;}</style>');
+function _(id) {
+    return document.getElementById(id);
+}
+
+var droppedIn = false;
+
+window.onload = function () {
+
+    // Drag zone functionality
+    var inputZone = _('input_zone');
+	var systemZone = _('system_zone');
+	var outputZone = _('output_zone');
+
+
+    inputZone.addEventListener('dragenter', handleDragEnter, false);
+    inputZone.addEventListener('dragleave', handleDragLeave, false);
+    inputZone.addEventListener('drop', handleDragDrop, false);
+
+	systemZone.addEventListener('dragenter', handleDragEnter, false);
+    systemZone.addEventListener('dragleave', handleDragLeave, false);
+    systemZone.addEventListener('drop', handleDragDrop, false);
+
+	outputZone.addEventListener('dragenter', handleDragEnter, false);
+    outputZone.addEventListener('dragleave', handleDragLeave, false);
+    outputZone.addEventListener('drop', handleDragDrop, false);
+
+    function handleCheckCorrect(element_id,zone_id,element_value) {
+		if(zone_id === 'input_zone'){
+			console.log(element_id.replace("object",""));
+			if( parseInt(element_id.replace("object","")) < 6 ){
+			return "正確: "+element_value+" 屬於"+zone_id;
+		    }else {
+			return "不正確: "+element_value+" 不屬於"+zone_id;
+			}
+		}
+		else if(zone_id === 'system_zone'){
+			console.log(element_id.replace("object",""));
+			if( parseInt(element_id.replace("object","")) > 5 && parseInt(element_id.replace("object","")) < 11 ){
+			return "正確: "+element_value+" 屬於"+zone_id;
+		    }else {
+			return "不正確: "+element_value+" 不屬於"+zone_id;
+			}
+		}
+		else if(zone_id === 'output_zone'){
+			console.log(element_id.replace("object",""));
+			if( parseInt(element_id.replace("object","")) > 10 ){
+			return "正確: "+element_value+" 屬於"+zone_id;
+		    }else {
+			return "不正確: "+element_value+" 不屬於"+zone_id;
+			}
+		}
+
+		else {return "ALL in Correct: You droped " + element_id + " into " + zone_id ;}
+
+    }
+    function handleDragEnter(e) {
+        _('app_status').innerHTML = "You are dragging over the " + e
+            .target
+            .getAttribute('id');
+    }
+
+    function handleDragLeave(e) {
+        _('app_status').innerHTML = "function handleDragLeave " + e
+            .target
+            .getAttribute('id');
+    }
+
+    function handleDragDrop(e) {
+        e.preventDefault();
+		var zone_id = e
+			.target
+            .getAttribute('id');
+        var element_id = e    //被Drag的名字 ex: object
+            .dataTransfer
+            .getData("element_id");
+		var element_value = e    //被Drag的名字 ex: object
+            .dataTransfer
+            .getData("element_value");
+	      e
+			.target
+            .appendChild(_(element_id));
+        _(element_id).removeAttribute("draggable")
+        _(element_id).style.cursor = "default";
+        droppedIn = true;
+        _('app_status').innerHTML = handleCheckCorrect(element_id,zone_id,element_value);
+    }
+
+    // Draggable element functionality
+    var object1 = _('object1');
+    var object2 = _('object2');
+	var object3 = _('object3');
+    var object4 = _('object4');
+    var object5 = _('object5');
+    var object6 = _('object6');
+	var object7 = _('object7');
+    var object8 = _('object8');
+	var object9 = _('object9');
+    var object10 = _('object10');
+	var object11 = _('object11');
+    var object12 = _('object12');
+
+
+    var activeEvent = '';
+    var originalX = '';
+    var originalY = '';
+
+     object1.addEventListener('dragstart', handleDragStart, false);
+    object1.addEventListener('dragend', handleDragEnd, false);
+    object1.addEventListener('touchstart', handleTouchStart, false);
+    object1.addEventListener('touchmove', handleTouchMove, false);
+    object1.addEventListener('touchend', handleTouchEnd, false);
+
+    object2.addEventListener('dragstart', handleDragStart, false);
+    object2.addEventListener('dragend', handleDragEnd, false);
+    object2.addEventListener('touchstart', handleTouchStart, false);
+    object2.addEventListener('touchmove', handleTouchMove, false);
+    object2.addEventListener('touchend', handleTouchEnd, false);
+
+    object3.addEventListener('dragstart', handleDragStart, false);
+    object3.addEventListener('dragend', handleDragEnd, false);
+    object3.addEventListener('touchstart', handleTouchStart, false);
+    object3.addEventListener('touchmove', handleTouchMove, false);
+    object3.addEventListener('touchend', handleTouchEnd, false);
+
+	object4.addEventListener('dragstart', handleDragStart, false);
+    object4.addEventListener('dragend', handleDragEnd, false);
+    object4.addEventListener('touchstart', handleTouchStart, false);
+    object4.addEventListener('touchmove', handleTouchMove, false);
+    object4.addEventListener('touchend', handleTouchEnd, false);
+
+    object5.addEventListener('dragstart', handleDragStart, false);
+    object5.addEventListener('dragend', handleDragEnd, false);
+    object5.addEventListener('touchstart', handleTouchStart, false);
+    object5.addEventListener('touchmove', handleTouchMove, false);
+    object5.addEventListener('touchend', handleTouchEnd, false);
+
+    object6.addEventListener('dragstart', handleDragStart, false);
+    object6.addEventListener('dragend', handleDragEnd, false);
+    object6.addEventListener('touchstart', handleTouchStart, false);
+    object6.addEventListener('touchmove', handleTouchMove, false);
+    object6.addEventListener('touchend', handleTouchEnd, false);
+
+	object7.addEventListener('dragstart', handleDragStart, false);
+    object7.addEventListener('dragend', handleDragEnd, false);
+    object7.addEventListener('touchstart', handleTouchStart, false);
+    object7.addEventListener('touchmove', handleTouchMove, false);
+    object7.addEventListener('touchend', handleTouchEnd, false);
+
+    object8.addEventListener('dragstart', handleDragStart, false);
+    object8.addEventListener('dragend', handleDragEnd, false);
+    object8.addEventListener('touchstart', handleTouchStart, false);
+    object8.addEventListener('touchmove', handleTouchMove, false);
+    object8.addEventListener('touchend', handleTouchEnd, false);
+
+    object9.addEventListener('dragstart', handleDragStart, false);
+    object9.addEventListener('dragend', handleDragEnd, false);
+    object9.addEventListener('touchstart', handleTouchStart, false);
+    object9.addEventListener('touchmove', handleTouchMove, false);
+    object9.addEventListener('touchend', handleTouchEnd, false);
+
+    object10.addEventListener('dragstart', handleDragStart, false);
+    object10.addEventListener('dragend', handleDragEnd, false);
+    object10.addEventListener('touchstart', handleTouchStart, false);
+    object10.addEventListener('touchmove', handleTouchMove, false);
+    object10.addEventListener('touchend', handleTouchEnd, false);
+
+    object11.addEventListener('dragstart', handleDragStart, false);
+    object11.addEventListener('dragend', handleDragEnd, false);
+    object11.addEventListener('touchstart', handleTouchStart, false);
+    object11.addEventListener('touchmove', handleTouchMove, false);
+    object11.addEventListener('touchend', handleTouchEnd, false);
+
+    object12.addEventListener('dragstart', handleDragStart, false);
+    object12.addEventListener('dragend', handleDragEnd, false);
+    object12.addEventListener('touchstart', handleTouchStart, false);
+    object12.addEventListener('touchmove', handleTouchMove, false);
+    object12.addEventListener('touchend', handleTouchEnd, false);
+
+
+
+    function handleDragStart(e) {
+        _('app_status').innerHTML = "Dragging the element " + e
+            .target
+            .getAttribute('id');
+        e.dataTransfer.dropEffect = "move";
+        e.dataTransfer.setData("element_id", e.target.getAttribute('id'));
+        e.dataTransfer.setData("element_value", e.target.getAttribute('value'));
+
+    }
+
+    function handleDragEnd(e) {
+        if (droppedIn == false) {
+            _('app_status').innerHTML = "You let the " + e
+                .target
+                .getAttribute('id') + " go.";
+        }
+        droppedIn = false;
+    }
+
+    function handleTouchStart(e) {
+        _('app_status').innerHTML = "Touch start with element " + e
+            .target
+            .getAttribute('id');
+        originalX = (e.target.offsetLeft - 10) + "px";
+        originalY = (e.target.offsetTop - 10) + "px";
+        activeEvent = 'start';
+    }
+
+    function handleTouchMove(e) {
+        var touchLocation = e.targetTouches[0];
+        var pageX = (touchLocation.pageX - 50) + "px";
+        var pageY = (touchLocation.pageY - 50) + "px";
+        _('app_status').innerHTML = "Touch x " + pageX + " Touch y " + pageY;
+        e.target.style.position = "absolute";
+        e.target.style.left = pageX;
+        e.target.style.top = pageY;
+        activeEvent = 'move';
+    }
+
+    function handleTouchEnd(e) {
+        e.preventDefault();
+        if (activeEvent === 'move') {
+            var pageX = (parseInt(e.target.style.left) - 50);
+            var pageY = (parseInt(e.target.style.top) - 50);
+
+            if (detectTouchEnd(inputZone.offsetLeft, inputZone.offsetTop, pageX, pageY, inputZone.offsetWidth, inputZone.offsetHeight)) {
+                inputZone.appendChild(e.target);
+                e.target.style.position = "initial";
+                droppedIn = true;
+				var element_id = e.target.getAttribute('id');
+				var element_value = e.target.getAttribute('value');
+				var zone_id = 'input_zone';
+				_('app_status').innerHTML = handleCheckCorrect(element_id,zone_id,element_value);
+            }
+			else if (detectTouchEnd(systemZone.offsetLeft, systemZone.offsetTop, pageX, pageY, systemZone.offsetWidth, systemZone.offsetHeight)) {
+                systemZone.appendChild(e.target);
+                e.target.style.position = "initial";
+                droppedIn = true;
+				var element_id = e.target.getAttribute('id');
+				var element_value = e.target.getAttribute('value');
+				var zone_id = 'system_zone';
+				_('app_status').innerHTML = handleCheckCorrect(element_id,zone_id,element_value);
+            }
+			else if (detectTouchEnd(outputZone.offsetLeft, outputZone.offsetTop, pageX, pageY, outputZone.offsetWidth, outputZone.offsetHeight)) {
+                outputZone.appendChild(e.target);
+                e.target.style.position = "initial";
+                droppedIn = true;
+				var element_id = e.target.getAttribute('id');
+				var element_value = e.target.getAttribute('value');
+				var zone_id = 'output_zone';
+				_('app_status').innerHTML = handleCheckCorrect(element_id,zone_id,element_value);
+            }
+			else {
+                e.target.style.left = originalX;
+                e.target.style.top = originalY;
+                _('app_status').innerHTML = "You let the " + e
+                    .target
+                    .getAttribute('id') + " go.";
+            }
+        }
+    }
+
+    function detectTouchEnd(x1, y1, x2, y2, w, h) {
+        //Very simple detection here
+        if (x2 - x1 > w)
+            return false;
+        if (y2 - y1 > h)
+            return false;
+        return true;
+    }
+}
+</script>
+
+{% endblock %}

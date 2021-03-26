@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container" >
+   <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">區名</th>
+          <th scope="col">名稱</th>
+          <th scope="col">電話</th>
+          <th scope="col">地址</th>
+        </tr>
+      </thead>
+  <tbody>
+    <tr>
+      <td>{{onerecord_get_by_name.district | slice:':2'}}</td>
+      <td>{{onerecord_get_by_name.name}}</td>
+      <td>{{onerecord_get_by_name.tel | slice:'3:'| cut:'-'}}</td>
+      <td>{{onerecord_get_by_name.addr}}</td>
+    </tr>
+  </tbody>
+</table>
+   <button type="button" class="btn btn-info" onclick="location.href='/subiapp/taiwan_map/{{onerecord_get_by_name.name}}刪'">確定刪除上筆資料</button>
+</div>
+{% endblock %}
+
+

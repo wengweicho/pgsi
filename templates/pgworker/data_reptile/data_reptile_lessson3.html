@@ -1,0 +1,104 @@
+{% extends "pgworker/data_reptile_base.html" %}
+{% load static %}
+{% load range %}
+{% load index %}
+{% load index_plus_1 %}
+{% load index_plus_2 %}
+{% block content %}
+<div class="container">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link " data-toggle="tab" href="#setup">安裝</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#explain">說明</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#lib_3rd">套件</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#codes">程式</a>
+            </li>
+
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane container fade" id="setup">
+                <h3>beautifulsoup實例說明</h3>
+                安裝beautifulsoup4:<br>
+                pip install beautifulsoup4<br>
+                pip install requests<br><br>
+                安裝可用的解析器:<br>
+                pip install lxml<br>
+                pip install html5lib
+            </div>
+            <div class="tab-pane container active" id="explain">
+                <h3>beautifulsoup實例說明</h3>
+                這是一個最好的年代,我們將去104人力網站爬蟲,看看如果你高
+                中畢業那一年你能不能靠寫Python找到一份工作,做一個快樂的程工
+
+            	<table class="table" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>公司</th>
+                    <th>職稱</th>
+                    <th>工作內容</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for i in 0|range:list_lenth %}
+                  <tr>
+                    <td>{{list|index:i }}</td>
+                    <td>{{list|index_plus_1:i }}</td>
+                    <td>{{list|index_plus_2:i}}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+                </table>
+
+            </div>
+            <div class="tab-pane container fade" id="lib_3rd" style="font-size:18px">
+                <h3>beautifulsoup實例說明</h3>
+                   <h4>用到的套件如ECharts等</h4>
+                   ECharts，縮寫來自 Enterprise Charts，商業級數據圖表，
+                   是百度的一個開源的數據可視化工具，一個純 Javascript
+                   的圖表庫，能夠在 PC 端和移動設備上流暢運行，兼容當
+                   前絕大部分瀏覽器（IE6/7/8/9/10/11，chrome，firefox
+                   ，Safari等），底層依賴輕量級的 Canvas 庫 ZRender.<br><br>
+                   ECharts 提供直觀，生動，可交互，可高度個性化定製的
+                   數據可視化圖表。創新的拖拽重計算、數據視圖、值域漫
+                   遊等特性大大增強了用戶體驗，賦予了用戶對數據進行挖
+                   掘、整合的能力.
+            </div>
+            <div class="tab-pane container fade" id="codes">
+                <h3>beautifulsoup實例說明</h3>
+                <h4 style="color:powderblue;">views.py</h4>
+                def data_reptile_lessson3(request):<br>
+                #因PythonAnywhere免費版不允許,故我們暫時以抓人工抓取一頁並存成HTML檔<br>
+                	list = []<br>
+                    with open(str(BASE_DIR)+"/static/files/python_高中職_台北市_新北市_104.html") as f:<br>
+                        soup = BeautifulSoup(f.read(), 'html.parser')<br>
+                    jobs = soup.findAll('article')<br>
+                    for job in jobs:<br>
+                        if  job.get('data-cust-name') is not None:<br>
+                            list.append(job.get('data-cust-name'))<br>
+                            list.append(job.get('data-job-name'))<br>
+                    skills = soup.findAll('p',class_="job-list-item__info b-clearfix b-content")<br>
+                    insert_index = -1<br>
+                    for skill in skills:<br>
+                        skill_contents = skill.contents<br>
+                        if skill_contents is not None:<br>
+                            skill_contents_string = ' '.join([str(elem) for elem in skill_contents])<br>
+                            skill_contents_string = re.sub("(?i)<.{0,1}em[^>]*>", "",skill_contents_string)<br>
+                            insert_index = insert_index + 3<br>
+                            list.insert(insert_index, skill_contents_string)<br>
+                    list_lenth = int(len(list)/3)<br>
+                    return render(request,"data_reptile/data_reptile_lessson3.html",locals())<br>
+                 <h4 style="color:powderblue;">data_reptile_lessson3.html</h4>
+
+                {{html_string}}
+
+            </div>
+
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+  <div class="container" >
+   <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">區名</th>
+      <th scope="col">名稱</th>
+      <th scope="col">電話</th>
+      <th scope="col">地址</th>
+      <th scope="col"></th>
+    </tr>
+    </tr>
+  </thead>
+  <tbody>
+    {% for subiinfo in subiinfos %}
+    <tr>
+      <td>{{subiinfo.district | slice:':2'}}</td>
+      <td>{{subiinfo.name}}</td>
+      <td>{{subiinfo.tel | cut:'-'}}</td>
+      <td>{{subiinfo.addr}}</td>
+      <td>
+
+          <a href="/subiapp/modify_onerecord/{{subiinfo.name}}/" title="修改">
+            <span style="color: green;"><i class="far fa-edit fa-lg"></i></span>
+          </a>
+          <a href="/subiapp/delete_onerecord/{{subiinfo.name}}/" title="刪除">
+            <span style="color: Tomato;"><i class="far fa-trash-alt fa-lg"></i></span>
+          </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+  </div>
+
+{% endblock %}
+
+

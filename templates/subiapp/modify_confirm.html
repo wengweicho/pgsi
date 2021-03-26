@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container" >
+<form action='/subiapp/taiwan_map/{{onerecord_get_by_name.name}}修' method="GET" name='form1'>
+   <table class="table">
+
+    <tr><th>區名</th><td><input type="text" id='district' name='district'  value={{onerecord_get_by_name.district}}></td></tr>
+    <tr><th>名稱</th><td><input type="text" id='name' name='name'  value={{onerecord_get_by_name.name}}></td></tr>
+    <tr><th>電話</th>  <td><input type="text" id='tel' name='tel'  value={{onerecord_get_by_name.tel}}></td></tr>
+    <tr><th>地址</th>  <td><input type="text" id='addr' name='addr'  value={{onerecord_get_by_name.addr}}></td></tr>
+    <tr>
+        <td><input type="submit" id='button1' name='button1'  value="送出去"></td>
+        <td><input type="reset" id='button2' name='button2'  value="重設"></td>
+    </tr>
+
+</table>
+
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-sm">
+    {% if cartnum == 0 %}
+      <div> 您的購物車是空的！</div>
+    {% endif %}
+    <div class="row">
+    {% for product in productall %}
+
+        <div class="col-6 col-sm-4">
+          <a href="/cartapp/detail/{{product.id}}"><img src="/static/images/cartapp/{{product.pimages}}" alt="產品詳細資料" class="img-thumbnail" /></a>
+          <br>
+          <a href="/cartapp/detail/{{product.id}}" >{{product.pname}}</a><br>
+          <a href="/cartapp/addtocart/add/{{product.id}}/" style="font-size:15px;color:green"><i class="fas fa-cart-plus" style="font-size:27px;color:green"></i>售價:{{product.pprice}}</a>
+        </div>
+    {% endfor %}
+    </div>
+  </div>
+{% endblock %}

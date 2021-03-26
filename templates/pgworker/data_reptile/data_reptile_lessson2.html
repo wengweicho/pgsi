@@ -1,0 +1,51 @@
+{% extends "pgworker/data_reptile_base.html" %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="row">
+
+    <div class="col-12 col-sm-5">
+		<h4>Lesson2-beautifulsoup簡介</h4>
+		<p class="lead" style="font-size:18px">
+		                通過解析文檔為使用者提供需要抓取的資料,自動將輸入文檔轉換為Unicode編碼,輸出文檔轉換為utf-8編碼,
+		                因為簡單,所以不需要多少代碼就可以寫出一個完整的應用程式,支援的解析器比較如圖。
+	    </p>
+    </div>
+    <div class="col-12 col-sm-5">
+            	<table class="table" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>解析器</th>
+                    <th>特性</th>
+                    <th>使用方法</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Python’s<br> HTML parser</td>
+                    <td>自身帶有<br>速度適中<br>文檔容錯能力強</td>
+                    <td>BeautifulSoup<br>(markup,<br>"html.parser")</td>
+
+                  </tr>
+                  <tr>
+                    <td>lxml’s HTML parser</td>
+                    <td>速度很快<br>相容性好</td>
+                    <td>BeautifulSoup<br>(markup,<br>"lxml")</td>
+                  </tr>
+                  <tr>
+                    <td>lxml’s XML parser</td>
+                    <td>速度很快<br>支援XML</td>
+                    <td>BeautifulSoup<br>(markup,<br>"lxml-xml")<br> BeautifulSoup<br>(markup,<br>"xml")</td>
+                  </tr>
+                  <tr>
+                    <td>html5lib HTML parser</td>
+                    <td>相容性好<br>速度很慢</td>
+                    <td>BeautifulSoup<br>(markup,<br>"html5lib")</td>
+                  </tr>
+                </tbody>
+              </table>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
